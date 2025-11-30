@@ -12,7 +12,5 @@ public class UI_Methods
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine($"Everytime you get a right answer, you'll get {Constants.WINNING_DELTA} points!!!");
         Console.ForegroundColor = ConsoleColor.Gray;
-        
-        
-    }
+        }
 }
