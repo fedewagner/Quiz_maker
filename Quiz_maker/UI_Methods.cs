@@ -60,7 +60,7 @@ public class UI_Methods
         
     }
     
-    public static void PrintQuestionAndPosibleAnswers(Logic.SetOfQuestions oneSetOfQuestions)
+    public static void PrintQuestionAndPosibleAnswers(SetOfQuestions oneSetOfQuestions)
     {
         Console.WriteLine("The question is:");
         Console.ForegroundColor = ConsoleColor.Yellow;

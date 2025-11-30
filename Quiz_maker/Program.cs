@@ -13,7 +13,7 @@ namespace Quiz_maker
             string? gameModus = UI_Methods.CheckUserKeyInputForGameModus();
             
             //Object
-            Logic.SetOfQuestions questionSet_1 = new Logic.SetOfQuestions();
+            SetOfQuestions questionSet1 = new SetOfQuestions();
 
             if (gameModus != null)
             {
@@ -24,15 +24,17 @@ namespace Quiz_maker
             {
                 //Things to be done for writing the questions
                 UI_Methods.WelcomeToWritingMode();
-                    
-                    
+
+                // UI_Methods.CreateASetOfQuestions();    
+                
+                
                 //Manual population of the first set
-                questionSet_1.Question = "What color has the sky?";
-                questionSet_1.Answer_1 = "Blue";
-                questionSet_1.Answer_2 = "Green";
-                questionSet_1.Answer_3 = "Transparent";
-                questionSet_1.Answer_4 = "No color";
-                questionSet_1.CorrectAnswer = 1;
+                questionSet1.Question = "What color has the sky?";
+                questionSet1.Answer_1 = "Blue";
+                questionSet1.Answer_2 = "Green";
+                questionSet1.Answer_3 = "Transparent";
+                questionSet1.Answer_4 = "No color";
+                questionSet1.CorrectAnswer = 1;
 
             }
             
@@ -44,7 +46,7 @@ namespace Quiz_maker
                 //Things to be done for playing
                     
                 //print first set
-                UI_Methods.PrintQuestionAndPosibleAnswers(questionSet_1);
+                UI_Methods.PrintQuestionAndPosibleAnswers(questionSet1);
                     
                 //Read user answer
             }
