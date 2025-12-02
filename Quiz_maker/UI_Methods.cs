@@ -59,4 +59,24 @@ public class UI_Methods
         //how to finish the writing mode (select a key for adding one more or another key to close the writing mode => playing mode)
         
     }
+    
+    public static void AskUserTheQuestionsAndAnswers(SetOfQuestions_Class setOfQuestions)
+    {
+        Console.WriteLine("What is the Question you would like to use for this set:");
+        string? questionInput = Console.ReadLine();
+        Console.WriteLine("What is the possible answer 1?");
+        string? answer1Input = Console.ReadLine();
+        Console.WriteLine("What is the possible answer 2?");
+        string? answer2Input = Console.ReadLine();
+        Console.WriteLine("What is the possible answer 3?");
+        string? answer3Input = Console.ReadLine();
+        Console.WriteLine("What is the possible answer 4?");
+        string? answer4Input = Console.ReadLine();
+        Console.WriteLine("Which possible answer is the correct? (please indicate an integer)");
+        int correctAnswerInput = Convert.ToInt32(Console.ReadLine());
+
+        setOfQuestions.PopulateTheQuestionsAndAnswers(questionInput, answer1Input, answer2Input, answer3Input, answer4Input, correctAnswerInput);
+
+    }
+    
 }
