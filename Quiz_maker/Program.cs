@@ -12,9 +12,10 @@ namespace Quiz_maker
             
             string? gameModus = UI_Methods.CheckUserKeyInputForGameModus();
             
+            //Object definition
             //define the first SetOfQuestions
             SetOfQuestions questionSet1 = new SetOfQuestions();
-            // UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
+            //TBD  UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
 
 
             if (gameModus != null)
@@ -28,12 +29,10 @@ namespace Quiz_maker
                 UI_Methods.WelcomeToWritingMode();
 
 
-                //Object
-                
                 
                 //populate method, where the questions & answers are asked to the user.
-                
-                UI_Methods.AskUserTheQuestionsAndAnswers(questionSet1);
+                questionSet1.AskUserTheQuestionsAndAnswers();
+                //TBD handle null cases
                 
 
             }
@@ -46,17 +45,17 @@ namespace Quiz_maker
                 //Things to be done for playing
                     
                 //print first set
-                UI_Methods.PrintQuestionAndPosibleAnswers(questionSet1);
+                questionSet1.PrintQuestionAndPossibleAnswers();
                     
-                //Read user answer
+                //TBD Read user answer
                 
-                //Compare user's answer with the correct one
+                //TBD Compare user's answer with the correct one
                 
-                //provide result of the comparisson
+                //TBD provide result of the comparisson
                 
-                //add score to user's score varible
+                //TBD add score to user's score varible
                 
-                //go on with mode set's of quesitons
+                //TBD go on with mode set's of quesitons
             }
             
             
