@@ -60,7 +60,7 @@ public class UI_Methods
         
     }
     
-    public static void AskUserTheQuestionsAndAnswers(SetOfQuestions_Class setOfQuestions)
+    public static void AskUserTheQuestionsAndAnswers(SetOfQuestionsClass setOfQuestions)
     {
         Console.WriteLine("What is the Question you would like to use for this set:");
         string? questionInput = Console.ReadLine();
@@ -77,6 +77,51 @@ public class UI_Methods
 
         setOfQuestions.PopulateTheQuestionsAndAnswers(questionInput, answer1Input, answer2Input, answer3Input, answer4Input, correctAnswerInput);
 
+    }
+
+    public static int ReadUserAnswerGuess(SetOfQuestionsClass setOfQuestions)
+    {
+        int userAnswer;
+        while (true)
+        {
+            Console.Write($"Enter your answer selection (from 1 to {setOfQuestions.dictionaryOfAnswers.Count}): ");
+            string? input = Console.ReadLine(); // leer string? porque puede ser null
+
+            // 1. validate number
+            if (!int.TryParse(input, out userAnswer))
+            {
+                Console.WriteLine("Please enter a valid number.");
+                continue;
+            }
+
+            // 2. validate that the selection is between 1 and the max value
+            int max = setOfQuestions.dictionaryOfAnswers.Count;
+
+            if (userAnswer < 1 || userAnswer > max)
+            {
+                Console.WriteLine($"Please choose a number between 1 and {max}");
+                continue;
+            }
+            // 3. if all valid then go out
+            break;
+        }
+
+        Console.WriteLine($"You selected option {userAnswer}");
+
+        return userAnswer;
+
+    }
+
+    public static void InformUserAboutAnswer(bool isCorrect)
+    {
+        if (isCorrect)
+        {
+            Console.WriteLine("Well done, correct answer!");
+        }
+        else
+        {
+            Console.WriteLine("Incorrect answer!");
+        }
     }
     
 }

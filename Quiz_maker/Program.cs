@@ -14,7 +14,7 @@ namespace Quiz_maker
             
             //Object definition
             //define the first SetOfQuestions
-            SetOfQuestions_Class questionClassSet1 = new SetOfQuestions_Class();
+            SetOfQuestionsClass questionClassSet1 = new SetOfQuestionsClass();
             //TBD  UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
 
 
@@ -44,15 +44,24 @@ namespace Quiz_maker
                     
                 //print first set
                 questionClassSet1.PrintQuestionAndPossibleAnswers();
-                    
-                //TBD Read user answer
+                
+                //Read user answer
+                int answerGuess;
+                answerGuess = UI_Methods.ReadUserAnswerGuess(questionClassSet1);
                 
                 //TBD Compare user's answer with the correct one
-                
+                bool correctAnswer = false;
+                correctAnswer = Logic.CheckUsersAnswer(answerGuess, questionClassSet1);
+                UI_Methods.InformUserAboutAnswer(correctAnswer);
+
+
+
+
+
                 //TBD provide result of the comparison
-                
+
                 //TBD add score to user's score variable
-                
+
                 //TBD go on with mode set's of questions
             }
         }
