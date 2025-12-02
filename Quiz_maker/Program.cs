@@ -46,21 +46,18 @@ namespace Quiz_maker
                 questionClassSet1.PrintQuestionAndPossibleAnswers();
                 
                 //Read user answer
-                int answerGuess;
-                answerGuess = UI_Methods.ReadUserAnswerGuess(questionClassSet1);
+                int answerGuess = UI_Methods.ReadUserAnswerGuess(questionClassSet1);
+
+                //Compare user's answer with the correct one
+                bool correctAnswer = Logic.CheckUsersAnswer(answerGuess, questionClassSet1);
                 
-                //TBD Compare user's answer with the correct one
-                bool correctAnswer = false;
-                correctAnswer = Logic.CheckUsersAnswer(answerGuess, questionClassSet1);
+                //Provide result of the comparison
                 UI_Methods.InformUserAboutAnswer(correctAnswer);
 
-
-
-
-
-                //TBD provide result of the comparison
-
-                //TBD add score to user's score variable
+                //Add score to user's score variable
+                int userScore = 0;
+                userScore = Logic.AddWinningScoreForUser(correctAnswer, userScore);
+                UI_Methods.PrintUsersScore(userScore);
 
                 //TBD go on with mode set's of questions
             }

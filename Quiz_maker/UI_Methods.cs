@@ -123,5 +123,10 @@ public class UI_Methods
             Console.WriteLine("Incorrect answer!");
         }
     }
+
+    public static void PrintUsersScore(int userScore)
+    {
+        Console.WriteLine($"Your score is currently {userScore} points!");
+    }
     
 }
