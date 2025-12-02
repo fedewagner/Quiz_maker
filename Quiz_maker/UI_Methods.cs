@@ -60,6 +60,33 @@ public class UI_Methods
         
     }
     
+    
+    public static void AskUserTheQuestionsAndAnswers(SetOfQuestions oneSetOfQuestions)
+    {
+        Console.WriteLine("What is the Question you would like to use for this set:");
+        string? questionInput = Console.ReadLine();
+        Console.WriteLine("What is the possible answer 1?");
+        string? answer1Input = Console.ReadLine();
+        Console.WriteLine("What is the possible answer 2?");
+        string? answer2Input = Console.ReadLine();
+        Console.WriteLine("What is the possible answer 3?");
+        string? answer3Input = Console.ReadLine();
+        Console.WriteLine("What is the possible answer 4?");
+        string? answer4Input = Console.ReadLine();
+        Console.WriteLine("Which possible answer is the correct? (please indicate an integer)");
+        int correctAnswerInput = Convert.ToInt32(Console.ReadLine());
+        
+        oneSetOfQuestions.Question =  questionInput;
+        oneSetOfQuestions.dictionaryOfAnswers[1] = answer1Input;
+        oneSetOfQuestions.dictionaryOfAnswers[2] = answer2Input;
+        oneSetOfQuestions.dictionaryOfAnswers[3] = answer3Input;
+        oneSetOfQuestions.dictionaryOfAnswers[4] = answer4Input;
+        oneSetOfQuestions.CorrectAnswer = correctAnswerInput; 
+        
+    }
+    
+    
+    
     public static void PrintQuestionAndPosibleAnswers(SetOfQuestions oneSetOfQuestions)
     {
         Console.WriteLine("The question is:");
@@ -73,6 +100,8 @@ public class UI_Methods
         Console.WriteLine("3. "  + oneSetOfQuestions.dictionaryOfAnswers[3]);
         Console.WriteLine("4. "  + oneSetOfQuestions.dictionaryOfAnswers[4]);    
     }
+
+   
     
     
     

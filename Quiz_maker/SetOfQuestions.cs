@@ -3,14 +3,10 @@ namespace Quiz_maker;
 public class SetOfQuestions
 {
     
-        public string Question;
-        public string Answer_1;
-        public string Answer_2;
-        public string Answer_3;
-        public string Answer_4;
+        public string? Question;
         public int CorrectAnswer; //from 1 to 4
 
-        public Dictionary<int, string> dictionaryOfAnswers = new Dictionary<int, string>();
+        public Dictionary<int, string?> dictionaryOfAnswers = new Dictionary<int, string?>();
 
         public void PopulateAnswer(
                 string string_1,

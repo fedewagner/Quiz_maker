@@ -12,8 +12,10 @@ namespace Quiz_maker
             
             string? gameModus = UI_Methods.CheckUserKeyInputForGameModus();
             
-            //Object
+            //define the first SetOfQuestions
             SetOfQuestions questionSet1 = new SetOfQuestions();
+            // UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
+
 
             if (gameModus != null)
             {
@@ -25,23 +27,14 @@ namespace Quiz_maker
                 //Things to be done for writing the questions
                 UI_Methods.WelcomeToWritingMode();
 
-                // UI_Methods.CreateASetOfQuestions();    
-                
-                
 
+                //Object
                 
-                /*var DictionaryOfAnswers = new Dictionary<int, string>
-                {
-                    {1,"Blue"},
-                    {2,"Green"},
-                    {3,"Transparent"},
-                    {4,"No color"}
-                };*/
                 
-                //Manual population of the first set
-                questionSet1.Question = "What color has the sky?";
-                questionSet1.PopulateAnswer("Blue", "Green", "Transparent", "No color", 1);
-
+                //populate method, where the questions & answers are asked to the user.
+                
+                UI_Methods.AskUserTheQuestionsAndAnswers(questionSet1);
+                
 
             }
             
