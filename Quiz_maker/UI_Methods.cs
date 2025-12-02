@@ -68,10 +68,10 @@ public class UI_Methods
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.WriteLine("And the possible answer are:");
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("1. "  + oneSetOfQuestions.Answer_1);
-        Console.WriteLine("2. "  + oneSetOfQuestions.Answer_2);
-        Console.WriteLine("3. "  + oneSetOfQuestions.Answer_3);
-        Console.WriteLine("4. "  + oneSetOfQuestions.Answer_4);    
+        Console.WriteLine("1. "  + oneSetOfQuestions.dictionaryOfAnswers[1]);
+        Console.WriteLine("2. "  + oneSetOfQuestions.dictionaryOfAnswers[2]);
+        Console.WriteLine("3. "  + oneSetOfQuestions.dictionaryOfAnswers[3]);
+        Console.WriteLine("4. "  + oneSetOfQuestions.dictionaryOfAnswers[4]);    
     }
     
     

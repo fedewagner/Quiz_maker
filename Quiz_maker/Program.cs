@@ -28,13 +28,20 @@ namespace Quiz_maker
                 // UI_Methods.CreateASetOfQuestions();    
                 
                 
+
+                
+                /*var DictionaryOfAnswers = new Dictionary<int, string>
+                {
+                    {1,"Blue"},
+                    {2,"Green"},
+                    {3,"Transparent"},
+                    {4,"No color"}
+                };*/
+                
                 //Manual population of the first set
                 questionSet1.Question = "What color has the sky?";
-                questionSet1.Answer_1 = "Blue";
-                questionSet1.Answer_2 = "Green";
-                questionSet1.Answer_3 = "Transparent";
-                questionSet1.Answer_4 = "No color";
-                questionSet1.CorrectAnswer = 1;
+                questionSet1.PopulateAnswer("Blue", "Green", "Transparent", "No color", 1);
+
 
             }
             
@@ -49,6 +56,14 @@ namespace Quiz_maker
                 UI_Methods.PrintQuestionAndPosibleAnswers(questionSet1);
                     
                 //Read user answer
+                
+                //Compare user's answer with the correct one
+                
+                //provide result of the comparisson
+                
+                //add score to user's score varible
+                
+                //go on with mode set's of quesitons
             }
             
             
