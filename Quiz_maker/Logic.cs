@@ -28,4 +28,14 @@ public class Logic
         return userScore;
     }
 
+    public static int PickOneRandomSet(List<QuestionsAndAnswers> questionsAndAnswersSet)
+    {
+        Random random = new Random();
+        
+        //random generation
+        int randomKey = random.Next(0, questionsAndAnswersSet.Count ); //+1 is to include also the max value as an option in the random function
+        
+        return randomKey;
+    }
+
 }
