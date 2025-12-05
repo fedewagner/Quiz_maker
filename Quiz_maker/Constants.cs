@@ -8,6 +8,4 @@ public class Constants
     public const string KEY_FOR_PLAYING = "p";
     public const string PLAYING_MODE_STRING = "PLAY";
 
-    public const int CORRECT_ANSWER_DELTA = 10;
-
 }
