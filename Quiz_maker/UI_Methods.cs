@@ -168,7 +168,7 @@ public class UI_Methods
 
     public static string CheckIfUserWantsToPlayAlready()
     {
-        //TBD Read Key Method
+        //Read Key Method
         string selection;
         string? currentMode = null;
         
@@ -177,7 +177,6 @@ public class UI_Methods
             Console.WriteLine(
                 $"Please press ´{Constants.KEY_FOR_PLAYING}´ for playing or ´{Constants.KEY_FOR_WRITING}´ adding more questions sets.");
             
-            //read key method
             selection = Console.ReadKey(true).KeyChar.ToString().ToLower();
 
             if (!(selection == Constants.KEY_FOR_PLAYING || selection == Constants.KEY_FOR_WRITING))
@@ -204,7 +203,7 @@ public class UI_Methods
     {
         Console.WriteLine();
         
-        //TBD Read Key Method
+        //Read Key Method
         string selection;
         string? wantToEndTheGame = null;
         
@@ -212,12 +211,11 @@ public class UI_Methods
         {
             Console.WriteLine($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO})");
             
-            //read key method
             selection = Console.ReadKey(true).KeyChar.ToString().ToLower();
 
             if (!(selection == Constants.KEY_FOR_YES || selection == Constants.KEY_FOR_NO))
             {
-                Console.WriteLine($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO}");
+                Console.WriteLine($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO})");
             }
         } while (!(selection == Constants.KEY_FOR_YES || selection == Constants.KEY_FOR_NO) ); //repeat if the key is not valid
 

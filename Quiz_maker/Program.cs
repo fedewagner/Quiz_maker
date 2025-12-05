@@ -12,8 +12,6 @@ namespace Quiz_maker
             
             string? gameModus = UI_Methods.CheckUserKeyInputForGameModus();
             
-            
-            
             List<QuestionsAndAnswers> listOfQuestionsAndAnswersSet = new List<QuestionsAndAnswers>();
 
             if (gameModus != null)
@@ -27,10 +25,6 @@ namespace Quiz_maker
                 //Object definition
                 //define the first SetOfQuestions
                 QuestionsAndAnswers questionAndAnswersSet_i = new QuestionsAndAnswers();
-                
-                //TBD once exit writing mode, then implement Serialize Method to save the info in a file
-
-                //TBD once serialised is implemented, write a method to read and load file at the beginning of the program 
 
                 //TBD handle null cases
 
@@ -41,31 +35,33 @@ namespace Quiz_maker
                     UI_Methods.WelcomeToWritingMode();
                 }
                 
-                //populate method, where the questions & answers are asked to the user.
+                //Populate Set, where the questions & answers are asked to the user.
                 questionAndAnswersSet_i = UI_Methods.AskUserTheQuestionsAndAnswers(questionAndAnswersSet_i);
 
                 //List for storing sets
                 listOfQuestionsAndAnswersSet.Add(questionAndAnswersSet_i);
                 
 
-                //TBD tell how many QuestionsAndAnswersSet are stored
+                //Show how many QuestionsAndAnswersSet are stored
                 UI_Methods.ShowAmountOfQuestionsAndAnswersSetStored(listOfQuestionsAndAnswersSet);
 
-                //TBD if any then ask and append the sets to the list until a key is asked to leave the "WRITING MODE" - decide when to ask
+                //If any then ask and append the sets to the list until a key is asked to leave the "WRITING MODE" - decide when to ask
                 gameModus = UI_Methods.CheckIfUserWantsToPlayAlready();
+                
+                //TBD once exit writing mode, then implement Serialize Method to save the info in a file
+
+                //TBD once serialised is implemented, write a method to read and load file at the beginning of the program 
+                
+                
 
             } while (gameModus == Constants.WRITING_MODE_STRING);
-            
-            //TBD a logic to go into PLAYING MODE, for now I force it manually
-            gameModus = Constants.PLAYING_MODE_STRING;
-
             
             //Add score to user's score variable
             int userScore = 0;
             
-            do
+            do  //Things to be done for playing
             {
-                //Things to be done for playing
+               
 
                 //Implement a method to pick one random set of questions and answers
                 int randomKey = 0;
@@ -86,9 +82,7 @@ namespace Quiz_maker
                 userScore = Logic.AddWinningScoreForUser(correctAnswer, userScore);
                 UI_Methods.PrintUsersScore(userScore);
 
-                //TBD go on with mode set's of questions
-
-                //TBD EndGame?
+                //ask to end the game EndGame
                 string wantToEndTheGame = UI_Methods.CheckIfWantsToEndTheGame();
 
                 if (wantToEndTheGame == "yesEndTheGame")
