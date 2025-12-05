@@ -3,11 +3,11 @@ namespace Quiz_maker;
 public class Logic
 
 {
-    public static bool CheckUsersAnswer(int userGuess, SetOfQuestionsClass setOfQuestions)
+    public static bool CheckUsersAnswer(int userGuess, QuestionsAndAnswers questions)
     {
         bool correctAnswer = false;
 
-        if (setOfQuestions.CorrectAnswer == userGuess)
+        if (questions.CorrectAnswer == userGuess)
         {
             correctAnswer = true;
         }

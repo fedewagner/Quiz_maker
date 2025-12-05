@@ -60,7 +60,7 @@ public class UI_Methods
         
     }
     
-    public static void AskUserTheQuestionsAndAnswers(SetOfQuestionsClass setOfQuestions)
+    public static void AskUserTheQuestionsAndAnswers(QuestionsAndAnswers questions)
     {
         Console.WriteLine("What is the Question you would like to use for this set:");
         string? questionInput = Console.ReadLine();
@@ -75,16 +75,16 @@ public class UI_Methods
         Console.WriteLine("Which possible answer is the correct? (please indicate an integer)");
         int correctAnswerInput = Convert.ToInt32(Console.ReadLine());
 
-        setOfQuestions.PopulateTheQuestionsAndAnswers(questionInput, answer1Input, answer2Input, answer3Input, answer4Input, correctAnswerInput);
+        questions.PopulateTheQuestionsAndAnswers(questionInput, answer1Input, answer2Input, answer3Input, answer4Input, correctAnswerInput);
 
     }
 
-    public static int ReadUserAnswerGuess(SetOfQuestionsClass setOfQuestions)
+    public static int ReadUserAnswerGuess(QuestionsAndAnswers questions)
     {
         int userAnswer;
         while (true)
         {
-            Console.Write($"Enter your answer selection (from 1 to {setOfQuestions.dictionaryOfAnswers.Count}): ");
+            Console.Write($"Enter your answer selection (from 1 to {questions.dictionaryOfAnswers.Count}): ");
             string? input = Console.ReadLine(); // leer string? porque puede ser null
 
             // 1. validate number
@@ -95,7 +95,7 @@ public class UI_Methods
             }
 
             // 2. validate that the selection is between 1 and the max value
-            int max = setOfQuestions.dictionaryOfAnswers.Count;
+            int max = questions.dictionaryOfAnswers.Count;
 
             if (userAnswer < 1 || userAnswer > max)
             {

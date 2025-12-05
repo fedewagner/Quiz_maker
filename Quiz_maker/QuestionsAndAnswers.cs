@@ -1,6 +1,6 @@
 namespace Quiz_maker;
 
-public class SetOfQuestionsClass
+public class QuestionsAndAnswers
 {
     
         public string? Question;

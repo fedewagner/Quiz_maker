@@ -14,7 +14,7 @@ namespace Quiz_maker
             
             //Object definition
             //define the first SetOfQuestions
-            SetOfQuestionsClass questionClassSet1 = new SetOfQuestionsClass();
+            QuestionsAndAnswers questionAndAnswersSet1 = new QuestionsAndAnswers();
             //TBD  UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
 
 
@@ -29,7 +29,7 @@ namespace Quiz_maker
                 UI_Methods.WelcomeToWritingMode();
                 
                 //populate method, where the questions & answers are asked to the user.
-                UI_Methods.AskUserTheQuestionsAndAnswers(questionClassSet1);
+                UI_Methods.AskUserTheQuestionsAndAnswers(questionAndAnswersSet1);
                 
                 //TBD handle null cases
 
@@ -43,13 +43,13 @@ namespace Quiz_maker
                 //Things to be done for playing
                     
                 //print first set
-                questionClassSet1.PrintQuestionAndPossibleAnswers();
+                questionAndAnswersSet1.PrintQuestionAndPossibleAnswers();
                 
                 //Read user answer
-                int answerGuess = UI_Methods.ReadUserAnswerGuess(questionClassSet1);
+                int answerGuess = UI_Methods.ReadUserAnswerGuess(questionAndAnswersSet1);
 
                 //Compare user's answer with the correct one
-                bool correctAnswer = Logic.CheckUsersAnswer(answerGuess, questionClassSet1);
+                bool correctAnswer = Logic.CheckUsersAnswer(answerGuess, questionAndAnswersSet1);
                 
                 //Provide result of the comparison
                 UI_Methods.InformUserAboutAnswer(correctAnswer);
