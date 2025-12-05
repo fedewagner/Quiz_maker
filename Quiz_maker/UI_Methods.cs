@@ -60,7 +60,7 @@ public class UI_Methods
         
     }
     
-    public static void AskUserTheQuestionsAndAnswers(QuestionsAndAnswers questionsAndAnswersSet)
+    public static QuestionsAndAnswers AskUserTheQuestionsAndAnswers(QuestionsAndAnswers questionsAndAnswersSet)
     {
         Console.WriteLine("What is the Question you would like to use for this set:");
         string? questionInput = Console.ReadLine();
@@ -75,11 +75,13 @@ public class UI_Methods
         Console.WriteLine("Which possible answer is the correct? (please indicate an integer)");
         int correctAnswerInput = Convert.ToInt32(Console.ReadLine());
 
-        PopulateTheQuestionsAndAnswers(questionInput, answer1Input, answer2Input, answer3Input, answer4Input, correctAnswerInput, questionsAndAnswersSet);
+        questionsAndAnswersSet = PopulateTheQuestionsAndAnswers(questionInput, answer1Input, answer2Input, answer3Input, answer4Input, correctAnswerInput, questionsAndAnswersSet);
+        
+        return questionsAndAnswersSet;
 
     }
     
-    public static void PopulateTheQuestionsAndAnswers(string? questionInput,string? answer1Input,string? answer2Input,string? answer3Input,string? answer4Input,int correctAnswerInput, QuestionsAndAnswers questionsAndAnswersSet) 
+    public static QuestionsAndAnswers PopulateTheQuestionsAndAnswers(string? questionInput,string? answer1Input,string? answer2Input,string? answer3Input,string? answer4Input,int correctAnswerInput, QuestionsAndAnswers questionsAndAnswersSet) 
     {
         questionsAndAnswersSet.Question =  questionInput;
         questionsAndAnswersSet.dictionaryOfAnswers[1] = answer1Input;
@@ -87,6 +89,8 @@ public class UI_Methods
         questionsAndAnswersSet.dictionaryOfAnswers[3] = answer3Input;
         questionsAndAnswersSet.dictionaryOfAnswers[4] = answer4Input;
         questionsAndAnswersSet.CorrectAnswer = correctAnswerInput; 
+        
+        return questionsAndAnswersSet;
         
     }
     
@@ -194,6 +198,41 @@ public class UI_Methods
         
         return currentMode;
         
+    }
+
+    public static string CheckIfWantsToEndTheGame()
+    {
+        Console.WriteLine();
+        
+        //TBD Read Key Method
+        string selection;
+        string? wantToEndTheGame = null;
+        
+        do
+        {
+            Console.WriteLine($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO})");
+            
+            //read key method
+            selection = Console.ReadKey(true).KeyChar.ToString().ToLower();
+
+            if (!(selection == Constants.KEY_FOR_YES || selection == Constants.KEY_FOR_NO))
+            {
+                Console.WriteLine($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO}");
+            }
+        } while (!(selection == Constants.KEY_FOR_YES || selection == Constants.KEY_FOR_NO) ); //repeat if the key is not valid
+
+        switch (selection)
+        {
+            case Constants.KEY_FOR_YES:
+                wantToEndTheGame = "yesEndTheGame";
+                break;
+            case Constants.KEY_FOR_NO:
+                wantToEndTheGame = "no";
+                break;
+        }
+        
+        return wantToEndTheGame;
+
     }
 
 }

@@ -12,9 +12,7 @@ namespace Quiz_maker
             
             string? gameModus = UI_Methods.CheckUserKeyInputForGameModus();
             
-            //Object definition
-            //define the first SetOfQuestions
-            QuestionsAndAnswers questionAndAnswersSet_i = new QuestionsAndAnswers();
+            
             
             List<QuestionsAndAnswers> listOfQuestionsAndAnswersSet = new List<QuestionsAndAnswers>();
 
@@ -26,8 +24,9 @@ namespace Quiz_maker
 
             do
             {
-                
-                //TBD  UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
+                //Object definition
+                //define the first SetOfQuestions
+                QuestionsAndAnswers questionAndAnswersSet_i = new QuestionsAndAnswers();
                 
                 //TBD once exit writing mode, then implement Serialize Method to save the info in a file
 
@@ -43,9 +42,9 @@ namespace Quiz_maker
                 }
                 
                 //populate method, where the questions & answers are asked to the user.
-                UI_Methods.AskUserTheQuestionsAndAnswers(questionAndAnswersSet_i);
+                questionAndAnswersSet_i = UI_Methods.AskUserTheQuestionsAndAnswers(questionAndAnswersSet_i);
 
-                //IN_PROGRESS develop a way of storing sets
+                //List for storing sets
                 listOfQuestionsAndAnswersSet.Add(questionAndAnswersSet_i);
                 
 
@@ -60,32 +59,44 @@ namespace Quiz_maker
             //TBD a logic to go into PLAYING MODE, for now I force it manually
             gameModus = Constants.PLAYING_MODE_STRING;
 
-            if (gameModus == Constants.PLAYING_MODE_STRING)
+            
+            //Add score to user's score variable
+            int userScore = 0;
+            
+            do
             {
                 //Things to be done for playing
-                
-                //TBD Implement a method to pick one random set of questions and answers
-                int randomKey = Logic.PickOneRandomSet(listOfQuestionsAndAnswersSet);
 
-                //print first set
+                //Implement a method to pick one random set of questions and answers
+                int randomKey = 0;
+                randomKey = Logic.PickOneRandomSet(listOfQuestionsAndAnswersSet);
+
+                //print set
                 UI_Methods.PrintQuestionAndPossibleAnswers(listOfQuestionsAndAnswersSet[randomKey]);
-                
+
                 //Read user answer
                 int answerGuess = UI_Methods.ReadUserAnswerGuess(listOfQuestionsAndAnswersSet[randomKey]);
 
                 //Compare user's answer with the correct one
                 bool correctAnswer = Logic.CheckUsersAnswer(answerGuess, listOfQuestionsAndAnswersSet[randomKey]);
-                
+
                 //Provide result of the comparison
                 UI_Methods.InformUserAboutAnswer(correctAnswer);
-
-                //Add score to user's score variable
-                int userScore = 0;
+                
                 userScore = Logic.AddWinningScoreForUser(correctAnswer, userScore);
                 UI_Methods.PrintUsersScore(userScore);
 
                 //TBD go on with mode set's of questions
-            }
+
+                //TBD EndGame?
+                string wantToEndTheGame = UI_Methods.CheckIfWantsToEndTheGame();
+
+                if (wantToEndTheGame == "yesEndTheGame")
+                {
+                    break;
+                }
+
+            } while (gameModus == Constants.PLAYING_MODE_STRING);
         }
     }
 }
