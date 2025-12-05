@@ -21,46 +21,45 @@ namespace Quiz_maker
                 //Continue
                 //TBD implement a control if wrong keys are pressed or remove this if control (if not needed)
             }
-            
-            if (gameModus == Constants.WRITING_MODE_STRING)
+
+            do
             {
-               
-                
+
+
                 //Object definition
                 //define the first SetOfQuestions
-                
-            
+
+
                 //TBD  UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
 
-                
-                
-                
-                
+
+
+
+
                 //TBD once exit writing mode, then implement Serialize Method to save the info in a file
-                
+
                 //TBD once serialised is implemented, write a method to read and load file at the beginning of the program 
-                
+
                 //TBD handle null cases
 
-                
+
                 //Things to be done for writing the questions
                 UI_Methods.WelcomeToWritingMode();
-                
+
                 //populate method, where the questions & answers are asked to the user.
                 UI_Methods.AskUserTheQuestionsAndAnswers(questionAndAnswersSet_1);
-                
+
                 //IN_PROGRESS develop a way of storing sets
                 listOfQuestionsAndAnswersSet.Add(questionAndAnswersSet_1);
-                
-                
+
+
                 //TBD tell how many QuestionsAndAnswersSet are stored
                 UI_Methods.ShowAmountOfQuestionsAndAnswersSetStored(listOfQuestionsAndAnswersSet);
 
                 //TBD if any then ask and append the sets to the list until a key is asked to leave the "WRITING MODE" - decide when to ask
-                //TBD Read Key Method
-                
-                
-            }
+                gameModus = UI_Methods.CheckIfUserWantsToPlayAlready();
+
+            } while (gameModus == Constants.WRITING_MODE_STRING);
             
             //TBD a logic to go into PLAYING MODE, for now I force it manually
             gameModus = Constants.PLAYING_MODE_STRING;

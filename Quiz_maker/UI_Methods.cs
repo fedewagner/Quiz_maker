@@ -161,5 +161,39 @@ public class UI_Methods
     {
         Console.WriteLine($"The amount of stored set is: {questionsAndAnswersList.Count}");
     }
-    
+
+    public static string CheckIfUserWantsToPlayAlready()
+    {
+        //TBD Read Key Method
+        string selection;
+        string? currentMode = null;
+        
+        do
+        {
+            Console.WriteLine(
+                $"Please press ´{Constants.KEY_FOR_PLAYING}´ for playing or ´{Constants.KEY_FOR_WRITING}´ adding more questions sets.");
+            
+            //read key method
+            selection = Console.ReadKey(true).KeyChar.ToString().ToLower();
+
+            if (!(selection == Constants.KEY_FOR_PLAYING || selection == Constants.KEY_FOR_WRITING))
+            {
+                Console.WriteLine($"Please press ´{Constants.KEY_FOR_PLAYING}´ for playing or ´{Constants.KEY_FOR_WRITING}´ adding more questions sets.");
+            }
+        } while (!(selection == Constants.KEY_FOR_PLAYING || selection == Constants.KEY_FOR_WRITING) ); //repeat if the key is not valid
+
+        switch (selection)
+        {
+            case Constants.KEY_FOR_WRITING:
+                currentMode = "WRITE";
+                break;
+            case Constants.KEY_FOR_PLAYING:
+                currentMode = "PLAY";
+                break;
+        }
+        
+        return currentMode;
+        
+    }
+
 }
