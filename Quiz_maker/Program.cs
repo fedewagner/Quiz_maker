@@ -15,16 +15,28 @@ namespace Quiz_maker
             //Object definition
             //define the first SetOfQuestions
             QuestionsAndAnswers questionAndAnswersSet_1 = new QuestionsAndAnswers();
+            
             //TBD  UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
 
 
             if (gameModus != null)
             {
                 //Continue
+                //TBD implement a control if wrong keys are pressed or remove this if control (if not needed)
             }
             
             if (gameModus == Constants.WRITING_MODE_STRING)
             {
+                //TBD develop a way of storing sets
+                
+                //TBD tell how many QuestionsAndAnswersSet are stored.
+                
+                //TBD if any then ask and append the sets to the list until a key is asked to leave the "WRITING MODE" - decide when to ask
+                
+                //TBD once exit writing mode, then implement Serialize Method to save the info in a file
+                
+                //TBD once serialised is implemented, write a method to read and load file at the beginning of the program 
+                
                 //Things to be done for writing the questions
                 UI_Methods.WelcomeToWritingMode();
                 
