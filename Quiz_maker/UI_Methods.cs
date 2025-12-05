@@ -60,7 +60,7 @@ public class UI_Methods
         
     }
     
-    public static void AskUserTheQuestionsAndAnswers(QuestionsAndAnswers questions)
+    public static void AskUserTheQuestionsAndAnswers(QuestionsAndAnswers questionsAndAnswersSet)
     {
         Console.WriteLine("What is the Question you would like to use for this set:");
         string? questionInput = Console.ReadLine();
@@ -75,9 +75,23 @@ public class UI_Methods
         Console.WriteLine("Which possible answer is the correct? (please indicate an integer)");
         int correctAnswerInput = Convert.ToInt32(Console.ReadLine());
 
-        questions.PopulateTheQuestionsAndAnswers(questionInput, answer1Input, answer2Input, answer3Input, answer4Input, correctAnswerInput);
+        PopulateTheQuestionsAndAnswers(questionInput, answer1Input, answer2Input, answer3Input, answer4Input, correctAnswerInput, questionsAndAnswersSet);
 
     }
+    
+    public static void PopulateTheQuestionsAndAnswers(string? questionInput,string? answer1Input,string? answer2Input,string? answer3Input,string? answer4Input,int correctAnswerInput, QuestionsAndAnswers questionsAndAnswersSet) 
+    {
+        questionsAndAnswersSet.Question =  questionInput;
+        questionsAndAnswersSet.dictionaryOfAnswers[1] = answer1Input;
+        questionsAndAnswersSet.dictionaryOfAnswers[2] = answer2Input;
+        questionsAndAnswersSet.dictionaryOfAnswers[3] = answer3Input;
+        questionsAndAnswersSet.dictionaryOfAnswers[4] = answer4Input;
+        questionsAndAnswersSet.CorrectAnswer = correctAnswerInput; 
+        
+    }
+    
+    
+    
 
     public static int ReadUserAnswerGuess(QuestionsAndAnswers questions)
     {
