@@ -12,12 +12,9 @@ namespace Quiz_maker
             
             string? gameModus = UI_Methods.CheckUserKeyInputForGameModus();
             
-            //Object definition
-            //define the first SetOfQuestions
             QuestionsAndAnswers questionAndAnswersSet_1 = new QuestionsAndAnswers();
             
-            //TBD  UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
-
+            List<QuestionsAndAnswers> listOfQuestionsAndAnswersSet = new List<QuestionsAndAnswers>();
 
             if (gameModus != null)
             {
@@ -27,15 +24,24 @@ namespace Quiz_maker
             
             if (gameModus == Constants.WRITING_MODE_STRING)
             {
-                //TBD develop a way of storing sets
+               
                 
-                //TBD tell how many QuestionsAndAnswersSet are stored.
+                //Object definition
+                //define the first SetOfQuestions
                 
-                //TBD if any then ask and append the sets to the list until a key is asked to leave the "WRITING MODE" - decide when to ask
+            
+                //TBD  UI_Methods.CreateASetOfQuestions() for more that one set with concat "_i" for different names?
+
+                
+                
+                
                 
                 //TBD once exit writing mode, then implement Serialize Method to save the info in a file
                 
                 //TBD once serialised is implemented, write a method to read and load file at the beginning of the program 
+                
+                //TBD handle null cases
+
                 
                 //Things to be done for writing the questions
                 UI_Methods.WelcomeToWritingMode();
@@ -43,8 +49,17 @@ namespace Quiz_maker
                 //populate method, where the questions & answers are asked to the user.
                 UI_Methods.AskUserTheQuestionsAndAnswers(questionAndAnswersSet_1);
                 
-                //TBD handle null cases
+                //IN_PROGRESS develop a way of storing sets
+                listOfQuestionsAndAnswersSet.Add(questionAndAnswersSet_1);
+                
+                
+                //TBD tell how many QuestionsAndAnswersSet are stored
+                UI_Methods.ShowAmountOfQuestionsAndAnswersSetStored(listOfQuestionsAndAnswersSet);
 
+                //TBD if any then ask and append the sets to the list until a key is asked to leave the "WRITING MODE" - decide when to ask
+                //TBD Read Key Method
+                
+                
             }
             
             //TBD a logic to go into PLAYING MODE, for now I force it manually
@@ -53,15 +68,15 @@ namespace Quiz_maker
             if (gameModus == Constants.PLAYING_MODE_STRING)
             {
                 //Things to be done for playing
-                    
+
                 //print first set
-                UI_Methods.PrintQuestionAndPossibleAnswers(questionAndAnswersSet_1);
+                UI_Methods.PrintQuestionAndPossibleAnswers(listOfQuestionsAndAnswersSet[0]);
                 
                 //Read user answer
-                int answerGuess = UI_Methods.ReadUserAnswerGuess(questionAndAnswersSet_1);
+                int answerGuess = UI_Methods.ReadUserAnswerGuess(listOfQuestionsAndAnswersSet[0]);
 
                 //Compare user's answer with the correct one
-                bool correctAnswer = Logic.CheckUsersAnswer(answerGuess, questionAndAnswersSet_1);
+                bool correctAnswer = Logic.CheckUsersAnswer(answerGuess, listOfQuestionsAndAnswersSet[0]);
                 
                 //Provide result of the comparison
                 UI_Methods.InformUserAboutAnswer(correctAnswer);

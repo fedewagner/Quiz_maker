@@ -156,5 +156,10 @@ public class UI_Methods
     {
         Console.WriteLine($"Your score is currently {userScore} points!");
     }
+
+    public static void ShowAmountOfQuestionsAndAnswersSetStored(List<QuestionsAndAnswers> questionsAndAnswersList)
+    {
+        Console.WriteLine($"The amount of stored set is: {questionsAndAnswersList.Count}");
+    }
     
 }
