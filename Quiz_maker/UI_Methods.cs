@@ -90,6 +90,20 @@ public class UI_Methods
         
     }
     
+    public static void PrintQuestionAndPossibleAnswers(QuestionsAndAnswers questionsAndAnswersSet)
+    {
+        Console.WriteLine("The question is:");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(questionsAndAnswersSet.Question);
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.WriteLine("And the possible answer are:");
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("1. "  + questionsAndAnswersSet.dictionaryOfAnswers[1]);
+        Console.WriteLine("2. "  + questionsAndAnswersSet.dictionaryOfAnswers[2]);
+        Console.WriteLine("3. "  + questionsAndAnswersSet.dictionaryOfAnswers[3]);
+        Console.WriteLine("4. "  + questionsAndAnswersSet.dictionaryOfAnswers[4]);    
+    }
+    
     
     
 

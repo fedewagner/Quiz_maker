@@ -43,7 +43,7 @@ namespace Quiz_maker
                 //Things to be done for playing
                     
                 //print first set
-                questionAndAnswersSet_1.PrintQuestionAndPossibleAnswers();
+                UI_Methods.PrintQuestionAndPossibleAnswers(questionAndAnswersSet_1);
                 
                 //Read user answer
                 int answerGuess = UI_Methods.ReadUserAnswerGuess(questionAndAnswersSet_1);
