@@ -24,7 +24,7 @@ namespace Quiz_maker
             {
                 //Deserialize
                 listOfQuestionsAndAnswersSet =  Logic.DeserializeTheList();
-                UI_Methods.InformAboutReadFile();
+                UI_Methods.InformAboutSerialisedFiles("read");
                 gameModus = Constants.PLAYING_MODE_STRING;
             }
             else
@@ -74,19 +74,16 @@ namespace Quiz_maker
                 {
                     //Serialize
                     Logic.SerializeTheList(listOfQuestionsAndAnswersSet);
-                    UI_Methods.InformAboutStoredFile();
+                    UI_Methods.InformAboutSerialisedFiles("saved");;
                 }
             }
             
             
-            
-            
-            //Add score to user's score variable
+            //Add score to user's score variable and other variables
             int userScore = 0;
-
             int questionsAsked = 0;
             
-            while (gameModus == Constants.PLAYING_MODE_STRING & questionsAsked <= Constants.TOTAL_QUESTIONS_ASKED)  //Things to be done for playing
+            while (gameModus == Constants.PLAYING_MODE_STRING & questionsAsked < Constants.TOTAL_QUESTIONS_ASKED)  //Things to be done for playing
             {
                 //Implement a method to pick one random set of questions and answers
                 int randomKey = 0;

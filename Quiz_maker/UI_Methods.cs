@@ -159,7 +159,7 @@ public class UI_Methods
 
     public static void PrintUsersScore(int userScore)
     {
-        Console.WriteLine($"Your score is currently {userScore} points!");
+        Console.WriteLine($"Your score is {userScore} points!");
     }
 
     public static void ShowAmountOfQuestionsAndAnswersSetStored(List<QuestionsAndAnswers> questionsAndAnswersList)
@@ -199,41 +199,7 @@ public class UI_Methods
         return currentMode;
         
     }
-
-    public static string CheckIfWantsToEndTheGame()
-    {
-        //Read Key Method
-        string selection;
-        string? wantToEndTheGame = null;
-        
-        //TBD Improve the Yes and No in separate methods to be reused. Include "NoValid" as a string to be used
-        
-        do
-        {
-            Console.WriteLine($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO})");
-            
-            selection = Console.ReadKey(true).KeyChar.ToString().ToLower();
-
-            if (!(selection == Constants.KEY_FOR_YES || selection == Constants.KEY_FOR_NO))
-            {
-                Console.WriteLine($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO})");
-            }
-        } while (!(selection == Constants.KEY_FOR_YES || selection == Constants.KEY_FOR_NO) ); //repeat if the key is not valid
-
-        switch (selection)
-        {
-            case Constants.KEY_FOR_YES:
-                wantToEndTheGame = "yes";
-                break;
-            case Constants.KEY_FOR_NO:
-                wantToEndTheGame = "no";
-                break;
-        }
-        
-        return wantToEndTheGame;
-
-    }
-
+    
     public static bool ReadYesOrNo(string question)
     {
         //Read Key Method
@@ -267,14 +233,9 @@ public class UI_Methods
         return isAfirmativeAnswer;
     }
 
-    public static void InformAboutStoredFile()
+    public static void InformAboutSerialisedFiles(string changeStatus)
     {
-        Console.WriteLine("Your List with Q&A was saved!");
-    }
-    
-    public static void InformAboutReadFile()
-    {
-        Console.WriteLine("Your List with Q&A was read!");
+        Console.WriteLine($"Your List with Q&A was {changeStatus}!");
     }
 
     public static void InformNumberOfQuestionsLeft(int questionsAsked)
