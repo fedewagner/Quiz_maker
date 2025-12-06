@@ -16,17 +16,16 @@ namespace Quiz_maker
             
             //ask for deserialization
             bool wantToReadTheList = UI_Methods.ReadYesOrNo($"Do you want to read the List of Questions and answers? (Y/N)");
+            
             string? gameModus;
-            bool readList = false;
+            bool newListCreatedByUser = false;
             
             if (wantToReadTheList)
             {
                 //Deserialize
-                //TBD once serialised is implemented, write a method to read and load file at the beginning of the program 
                 listOfQuestionsAndAnswersSet =  Logic.DeserializeTheList();
                 UI_Methods.InformAboutReadFile();
                 gameModus = Constants.PLAYING_MODE_STRING;
-                readList = true;
             }
             else
             {
@@ -36,6 +35,8 @@ namespace Quiz_maker
             while (gameModus == Constants.WRITING_MODE_STRING)
             {
                 //Object definition
+                newListCreatedByUser = true;
+                
                 //define the first SetOfQuestions
                 QuestionsAndAnswers questionAndAnswersSet_i = new QuestionsAndAnswers();
 
@@ -64,10 +65,9 @@ namespace Quiz_maker
             } ;
 
 
-            if (!readList)
+            if (newListCreatedByUser)
             {
                 //ask for serialization
-                //TBD once exit writing mode, then implement Serialize Method to save the info in a file
                 bool wantToStoreTheList = UI_Methods.ReadYesOrNo($"Do you want to store the List of Questions and answers? (Y/N)");
 
                 if (wantToStoreTheList)
@@ -83,11 +83,15 @@ namespace Quiz_maker
             
             //Add score to user's score variable
             int userScore = 0;
+
+            int questionsAsked = 0;
             
-            while (gameModus == Constants.PLAYING_MODE_STRING)  //Things to be done for playing
+            while (gameModus == Constants.PLAYING_MODE_STRING & questionsAsked <= Constants.TOTAL_QUESTIONS_ASKED)  //Things to be done for playing
             {
                 //Implement a method to pick one random set of questions and answers
                 int randomKey = 0;
+                questionsAsked += 1;
+                
                 randomKey = Logic.PickOneRandomSet(listOfQuestionsAndAnswersSet);
 
                 //print set
@@ -103,17 +107,15 @@ namespace Quiz_maker
                 UI_Methods.InformUserAboutAnswer(correctAnswer);
                 
                 userScore = Logic.AddWinningScoreForUser(correctAnswer, userScore);
+
+                UI_Methods.InformNumberOfQuestionsLeft(questionsAsked);
                 UI_Methods.PrintUsersScore(userScore);
 
-                //ask to end the game EndGame
-                bool wantToEndTheGame = UI_Methods.ReadYesOrNo($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO})");
-
-                if (wantToEndTheGame)
-                {
-                    break;
-                }
-
             };
+            
+            
+            
+            
         }
     }
 }

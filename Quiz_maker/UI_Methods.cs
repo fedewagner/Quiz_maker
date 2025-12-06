@@ -7,8 +7,9 @@ public class UI_Methods
         //give info to user
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("Welcome to the Quiz Maker!");
+        Console.WriteLine("You'll be able to answer 10 Questions!");
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("First you'll need to make sure the questions are stored into the App, and then you'll be able to answer them.");
+        Console.WriteLine("First you'll be able to preload general questions, otherwise, you can create your own set of questions and answers in the writing mode");
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine($"Everytime you get a right answer, you'll get {Constants.WINNING_DELTA} points!!!");
         Console.ForegroundColor = ConsoleColor.Gray;
@@ -274,6 +275,11 @@ public class UI_Methods
     public static void InformAboutReadFile()
     {
         Console.WriteLine("Your List with Q&A was read!");
+    }
+
+    public static void InformNumberOfQuestionsLeft(int questionsAsked)
+    {
+        Console.WriteLine($"You still have {Constants.TOTAL_QUESTIONS_ASKED - questionsAsked} questions left!");
     }
 
 
