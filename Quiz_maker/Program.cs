@@ -1,4 +1,6 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using System.Xml.Serialization;
+
 
 namespace Quiz_maker
 {
@@ -56,6 +58,10 @@ namespace Quiz_maker
 
             } while (gameModus == Constants.WRITING_MODE_STRING);
             
+            //Serialize
+
+            Logic.SerializeTheList(listOfQuestionsAndAnswersSet);
+            
             //Add score to user's score variable
             int userScore = 0;
             
@@ -75,6 +81,10 @@ namespace Quiz_maker
 
                 //Compare user's answer with the correct one
                 bool correctAnswer = Logic.CheckUsersAnswer(answerGuess, listOfQuestionsAndAnswersSet[randomKey]);
+                
+                
+                
+                
 
                 //Provide result of the comparison
                 UI_Methods.InformUserAboutAnswer(correctAnswer);

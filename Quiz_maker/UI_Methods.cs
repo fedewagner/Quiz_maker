@@ -84,10 +84,10 @@ public class UI_Methods
     public static QuestionsAndAnswers PopulateTheQuestionsAndAnswers(string? questionInput,string? answer1Input,string? answer2Input,string? answer3Input,string? answer4Input,int correctAnswerInput, QuestionsAndAnswers questionsAndAnswersSet) 
     {
         questionsAndAnswersSet.Question =  questionInput;
-        questionsAndAnswersSet.dictionaryOfAnswers[1] = answer1Input;
-        questionsAndAnswersSet.dictionaryOfAnswers[2] = answer2Input;
-        questionsAndAnswersSet.dictionaryOfAnswers[3] = answer3Input;
-        questionsAndAnswersSet.dictionaryOfAnswers[4] = answer4Input;
+        questionsAndAnswersSet.PosibleAnswer_1 = answer1Input;
+        questionsAndAnswersSet.PosibleAnswer_2 = answer2Input;
+        questionsAndAnswersSet.PosibleAnswer_3 = answer3Input;
+        questionsAndAnswersSet.PosibleAnswer_4 = answer4Input;
         questionsAndAnswersSet.CorrectAnswer = correctAnswerInput; 
         
         return questionsAndAnswersSet;
@@ -102,10 +102,10 @@ public class UI_Methods
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.WriteLine("And the possible answer are:");
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("1. "  + questionsAndAnswersSet.dictionaryOfAnswers[1]);
-        Console.WriteLine("2. "  + questionsAndAnswersSet.dictionaryOfAnswers[2]);
-        Console.WriteLine("3. "  + questionsAndAnswersSet.dictionaryOfAnswers[3]);
-        Console.WriteLine("4. "  + questionsAndAnswersSet.dictionaryOfAnswers[4]);    
+        Console.WriteLine("1. "  + questionsAndAnswersSet.PosibleAnswer_1);
+        Console.WriteLine("2. "  + questionsAndAnswersSet.PosibleAnswer_2);
+        Console.WriteLine("3. "  + questionsAndAnswersSet.PosibleAnswer_3);
+        Console.WriteLine("4. "  + questionsAndAnswersSet.PosibleAnswer_4);    
     }
     
     
@@ -116,7 +116,7 @@ public class UI_Methods
         int userAnswer;
         while (true)
         {
-            Console.Write($"Enter your answer selection (from 1 to {questions.dictionaryOfAnswers.Count}): ");
+            Console.Write($"Enter your answer selection (from 1 to {Constants.AMOUNT_OF_POSSIBLE_ANSWERS}): ");
             string? input = Console.ReadLine(); // leer string? porque puede ser null
 
             // 1. validate number
@@ -127,7 +127,7 @@ public class UI_Methods
             }
 
             // 2. validate that the selection is between 1 and the max value
-            int max = questions.dictionaryOfAnswers.Count;
+            int max = Constants.AMOUNT_OF_POSSIBLE_ANSWERS;
 
             if (userAnswer < 1 || userAnswer > max)
             {
@@ -207,6 +207,8 @@ public class UI_Methods
         string selection;
         string? wantToEndTheGame = null;
         
+        //TBD Improve the Yes and No in separate methods to be reused. Include "NoValid" as a string to be used
+        
         do
         {
             Console.WriteLine($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO})");
@@ -232,5 +234,7 @@ public class UI_Methods
         return wantToEndTheGame;
 
     }
+    
+    
 
 }

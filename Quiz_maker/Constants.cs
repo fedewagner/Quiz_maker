@@ -3,6 +3,7 @@ namespace Quiz_maker;
 public class Constants
 {
     public const int WINNING_DELTA = 10;
+    public const int AMOUNT_OF_POSSIBLE_ANSWERS = 4;
     public const string KEY_FOR_WRITING = "w";
     public const string WRITING_MODE_STRING = "WRITE";
     public const string KEY_FOR_PLAYING = "p";

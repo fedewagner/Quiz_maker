@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace Quiz_maker;
 
 public class Logic
@@ -37,5 +39,19 @@ public class Logic
         
         return randomKey;
     }
+    
+    
+    public static void SerializeTheList(List<QuestionsAndAnswers> list)
+    {
+        
+    XmlSerializer writer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
 
+    var path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList.xml";
+
+    using (FileStream file = File.Create(path))
+    {
+        writer.Serialize(file, list);
+    }
+    
+    }
 }
