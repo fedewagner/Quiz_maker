@@ -65,18 +65,34 @@ public class Logic
     
     }
 
-    public static List<QuestionsAndAnswers>? DeserializeTheList()
+    public static List<QuestionsAndAnswers>? DeserializeTheList(string difficulty)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
-        
-        var path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList.xml";
+        string path = null;
 
-        List<QuestionsAndAnswers> deserializedList;
-        
-        using (FileStream file = File.OpenRead(path))
+        switch (difficulty)
         {
-            deserializedList = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
+            case Constants.DIFFICULTY_EASY:
+                path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList_easy.xml";
+                break;
+            case Constants.DIFFICULTY_NORMAL:
+                path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList_normal.xml";
+                break;
+            case Constants.DIFFICULTY_HARD:
+                path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList_hard.xml";
+                break;
+
         }
+        
+
+        List<QuestionsAndAnswers> deserializedList = null;
+
+        if (path != null)
+            using (FileStream file = File.OpenRead(path))
+            {
+                deserializedList = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
+            }
+
         return deserializedList;
     }
     

@@ -242,6 +242,42 @@ public class UI_Methods
     {
         Console.WriteLine($"You still have {Constants.TOTAL_QUESTIONS_ASKED - questionsAsked} questions left!");
     }
+    
+    public static string WhichDifficulty(string question)
+    {
+        //Read Key Method
+        string selection;
+        string difficulty = null;
+        
+        //TBD Improve the Yes and No in separate methods to be reused. Include "NoValid" as a string to be used
+        
+        do
+        {
+            Console.WriteLine(question);
+            
+            selection = Console.ReadKey(true).KeyChar.ToString().ToLower();
+
+            if (!(selection == Constants.KEY_FOR_EASY || selection == Constants.KEY_FOR_NORMAL || selection == Constants.KEY_FOR_HARD))
+            {
+                Console.WriteLine(question);
+            }
+        } while (!(selection == Constants.KEY_FOR_EASY || selection == Constants.KEY_FOR_NORMAL || selection == Constants.KEY_FOR_HARD)); //repeat if the key is not valid
+
+        switch (selection)
+        {
+            case Constants.KEY_FOR_EASY:
+                difficulty = Constants.DIFFICULTY_EASY;
+                break;
+            case Constants.KEY_FOR_NORMAL:
+                difficulty = Constants.DIFFICULTY_NORMAL;
+                break;
+            case Constants.KEY_FOR_HARD:
+                difficulty = Constants.DIFFICULTY_HARD;
+                break;
+        }
+        
+        return difficulty;
+    }
 
 
 

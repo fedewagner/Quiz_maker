@@ -10,7 +10,7 @@ namespace Quiz_maker
         {
             UI_Methods.WelcomeUser();
             UI_Methods.ExplainUserTheModi();
-            List<QuestionsAndAnswers> listOfQuestionsAndAnswersSet = new List<QuestionsAndAnswers>();
+            List<QuestionsAndAnswers>? listOfQuestionsAndAnswersSet = new List<QuestionsAndAnswers>();
 
 
             //READ SERIALISED FILE SECTION
@@ -20,8 +20,12 @@ namespace Quiz_maker
             bool newListCreatedByUser = false;
             if (wantToReadTheList)
             {
+                
+                string listDifficutly = UI_Methods.WhichDifficulty($"Do you want the Easy, Normal or Hard questions? (e/n/h)");
+                
+                
                 //Deserialize
-                listOfQuestionsAndAnswersSet =  Logic.DeserializeTheList();
+                listOfQuestionsAndAnswersSet =  Logic.DeserializeTheList(listDifficutly);
                 UI_Methods.InformAboutSerialisedFiles("read");
                 gameModus = Constants.PLAYING_MODE_STRING;
             }
