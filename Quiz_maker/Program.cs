@@ -59,19 +59,18 @@ namespace Quiz_maker
                 //List for storing sets
                 listOfQuestionsAndAnswersSet.Add(questionAndAnswersSet_i);
                 
-
                 //Show how many QuestionsAndAnswersSet are stored
                 UI_Methods.ShowAmountOfQuestionsAndAnswersSetStored(listOfQuestionsAndAnswersSet);
 
-                //If any then ask and append the sets to the list until a key is asked to leave the "WRITING MODE" - decide when to ask
+                //Ask user if he want to keep adding more questions
                 gameModus = UI_Methods.CheckIfUserWantsToPlayAlready();
 
             } ;
 
-
+            //Serialisations of the created set of Questions and Answers
             if (newListCreatedByUser)
             {
-                //ask for serialization
+                
                 bool wantToStoreTheList = UI_Methods.ReadYesOrNo($"Do you want to store the List of Questions and answers? (Y/N)");
 
                 if (wantToStoreTheList)
