@@ -30,14 +30,24 @@ public class Logic
         return userScore;
     }
 
-    public static int PickOneRandomSet(List<QuestionsAndAnswers> questionsAndAnswersSet)
+
+    static HashSet<int> usedIndexes = new HashSet<int>();
+
+    public static int PickOneRandomSet(List<QuestionsAndAnswers> list)
     {
         Random random = new Random();
         
-        //random generation
-        int randomKey = random.Next(0, questionsAndAnswersSet.Count ); //+1 is to include also the max value as an option in the random function
+        int index;
+        do
+        {
+            index = random.Next(0, list.Count);
+        }
+        while (usedIndexes.Contains(index));
+
+        usedIndexes.Add(index);
+
+        return index;
         
-        return randomKey;
     }
     
     
