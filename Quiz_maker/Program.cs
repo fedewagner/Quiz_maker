@@ -9,17 +9,15 @@ namespace Quiz_maker
         static void Main(string[] args)
         {
             UI_Methods.WelcomeUser();
-            
             UI_Methods.ExplainUserTheModi();
-            
             List<QuestionsAndAnswers> listOfQuestionsAndAnswersSet = new List<QuestionsAndAnswers>();
-            
-            //ask for deserialization
+
+
+            //READ SERIALISED FILE SECTION
             bool wantToReadTheList = UI_Methods.ReadYesOrNo($"Do you want to read the List of Questions and answers? (Y/N)");
             
             string? gameModus;
             bool newListCreatedByUser = false;
-            
             if (wantToReadTheList)
             {
                 //Deserialize
@@ -32,6 +30,8 @@ namespace Quiz_maker
                 gameModus = Constants.WRITING_MODE_STRING;
             }
             
+            
+            //WRITE YOUR OWN QUESTIONS AND ANSWER SECTION
             while (gameModus == Constants.WRITING_MODE_STRING)
             {
                 //Object definition
@@ -78,7 +78,7 @@ namespace Quiz_maker
                 }
             }
             
-            
+            //PLAYING SECTION
             //Add score to user's score variable and other variables
             int userScore = 0;
             int questionsAsked = 0;
