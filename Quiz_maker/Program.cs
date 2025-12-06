@@ -12,17 +12,28 @@ namespace Quiz_maker
             
             UI_Methods.ExplainUserTheModi();
             
-            string? gameModus = UI_Methods.CheckUserKeyInputForGameModus();
-            
             List<QuestionsAndAnswers> listOfQuestionsAndAnswersSet = new List<QuestionsAndAnswers>();
-
-            if (gameModus != null)
+            
+            //ask for deserialization
+            bool wantToReadTheList = UI_Methods.ReadYesOrNo($"Do you want to read the List of Questions and answers? (Y/N)");
+            string? gameModus;
+            bool readList = false;
+            
+            if (wantToReadTheList)
             {
-                //Continue
-                //TBD implement a control if wrong keys are pressed or remove this if control (if not needed)
+                //Deserialize
+                //TBD once serialised is implemented, write a method to read and load file at the beginning of the program 
+                listOfQuestionsAndAnswersSet =  Logic.DeserializeTheList();
+                UI_Methods.InformAboutReadFile();
+                gameModus = Constants.PLAYING_MODE_STRING;
+                readList = true;
             }
-
-            do
+            else
+            {
+                gameModus = Constants.WRITING_MODE_STRING;
+            }
+            
+            while (gameModus == Constants.WRITING_MODE_STRING)
             {
                 //Object definition
                 //define the first SetOfQuestions
@@ -30,11 +41,11 @@ namespace Quiz_maker
 
                 //TBD handle null cases
 
-
                 //Things to be done for writing the questions
                 if (listOfQuestionsAndAnswersSet.Count == 0)
                 {
                     UI_Methods.WelcomeToWritingMode();
+                    
                 }
                 
                 //Populate Set, where the questions & answers are asked to the user.
@@ -49,33 +60,32 @@ namespace Quiz_maker
 
                 //If any then ask and append the sets to the list until a key is asked to leave the "WRITING MODE" - decide when to ask
                 gameModus = UI_Methods.CheckIfUserWantsToPlayAlready();
-                
-                //TBD once exit writing mode, then implement Serialize Method to save the info in a file
 
-                //TBD once serialised is implemented, write a method to read and load file at the beginning of the program 
-                
-                
+            } ;
 
-            } while (gameModus == Constants.WRITING_MODE_STRING);
-            
-            //ask for serialization
-            bool wantToStoreTheList = UI_Methods.ReadYesOrNo($"Do you want to store the List of Questions and answers? (Y/N)");
 
-            if (wantToStoreTheList)
+            if (!readList)
             {
-                //Serialize
-                Logic.SerializeTheList(listOfQuestionsAndAnswersSet);
-                UI_Methods.InformAboutStoredFile();
+                //ask for serialization
+                //TBD once exit writing mode, then implement Serialize Method to save the info in a file
+                bool wantToStoreTheList = UI_Methods.ReadYesOrNo($"Do you want to store the List of Questions and answers? (Y/N)");
+
+                if (wantToStoreTheList)
+                {
+                    //Serialize
+                    Logic.SerializeTheList(listOfQuestionsAndAnswersSet);
+                    UI_Methods.InformAboutStoredFile();
+                }
             }
+            
+            
             
             
             //Add score to user's score variable
             int userScore = 0;
             
-            do  //Things to be done for playing
+            while (gameModus == Constants.PLAYING_MODE_STRING)  //Things to be done for playing
             {
-               
-
                 //Implement a method to pick one random set of questions and answers
                 int randomKey = 0;
                 randomKey = Logic.PickOneRandomSet(listOfQuestionsAndAnswersSet);
@@ -89,10 +99,6 @@ namespace Quiz_maker
                 //Compare user's answer with the correct one
                 bool correctAnswer = Logic.CheckUsersAnswer(answerGuess, listOfQuestionsAndAnswersSet[randomKey]);
                 
-                
-                
-                
-
                 //Provide result of the comparison
                 UI_Methods.InformUserAboutAnswer(correctAnswer);
                 
@@ -107,7 +113,7 @@ namespace Quiz_maker
                     break;
                 }
 
-            } while (gameModus == Constants.PLAYING_MODE_STRING);
+            };
         }
     }
 }

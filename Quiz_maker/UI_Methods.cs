@@ -270,6 +270,11 @@ public class UI_Methods
     {
         Console.WriteLine("Your List with Q&A was saved!");
     }
+    
+    public static void InformAboutReadFile()
+    {
+        Console.WriteLine("Your List with Q&A was read!");
+    }
 
 
 

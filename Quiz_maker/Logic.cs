@@ -54,4 +54,22 @@ public class Logic
     }
     
     }
+
+    public static List<QuestionsAndAnswers>? DeserializeTheList()
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+        
+        var path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList.xml";
+
+        List<QuestionsAndAnswers> deserializedList;
+        
+        using (FileStream file = File.OpenRead(path))
+        {
+            deserializedList = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
+        }
+        return deserializedList;
+    }
+    
+    
+    
 }
