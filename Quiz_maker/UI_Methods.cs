@@ -201,8 +201,6 @@ public class UI_Methods
 
     public static string CheckIfWantsToEndTheGame()
     {
-        Console.WriteLine();
-        
         //Read Key Method
         string selection;
         string? wantToEndTheGame = null;
@@ -224,7 +222,7 @@ public class UI_Methods
         switch (selection)
         {
             case Constants.KEY_FOR_YES:
-                wantToEndTheGame = "yesEndTheGame";
+                wantToEndTheGame = "yes";
                 break;
             case Constants.KEY_FOR_NO:
                 wantToEndTheGame = "no";
@@ -234,7 +232,45 @@ public class UI_Methods
         return wantToEndTheGame;
 
     }
-    
-    
+
+    public static bool ReadYesOrNo(string question)
+    {
+        //Read Key Method
+        string selection;
+        bool isAfirmativeAnswer = false;
+        
+        //TBD Improve the Yes and No in separate methods to be reused. Include "NoValid" as a string to be used
+        
+        do
+        {
+            Console.WriteLine(question);
+            
+            selection = Console.ReadKey(true).KeyChar.ToString().ToLower();
+
+            if (!(selection == Constants.KEY_FOR_YES || selection == Constants.KEY_FOR_NO))
+            {
+                Console.WriteLine(question);
+            }
+        } while (!(selection == Constants.KEY_FOR_YES || selection == Constants.KEY_FOR_NO) ); //repeat if the key is not valid
+
+        switch (selection)
+        {
+            case Constants.KEY_FOR_YES:
+                isAfirmativeAnswer = true;
+                break;
+            case Constants.KEY_FOR_NO:
+                isAfirmativeAnswer = false;
+                break;
+        }
+        
+        return isAfirmativeAnswer;
+    }
+
+    public static void InformAboutStoredFile()
+    {
+        Console.WriteLine("Your List with Q&A was saved!");
+    }
+
+
 
 }

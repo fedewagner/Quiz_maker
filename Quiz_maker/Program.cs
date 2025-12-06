@@ -58,9 +58,16 @@ namespace Quiz_maker
 
             } while (gameModus == Constants.WRITING_MODE_STRING);
             
-            //Serialize
+            //ask for serialization
+            bool wantToStoreTheList = UI_Methods.ReadYesOrNo($"Do you want to store the List of Questions and answers? (Y/N)");
 
-            Logic.SerializeTheList(listOfQuestionsAndAnswersSet);
+            if (wantToStoreTheList)
+            {
+                //Serialize
+                Logic.SerializeTheList(listOfQuestionsAndAnswersSet);
+                UI_Methods.InformAboutStoredFile();
+            }
+            
             
             //Add score to user's score variable
             int userScore = 0;
@@ -93,9 +100,9 @@ namespace Quiz_maker
                 UI_Methods.PrintUsersScore(userScore);
 
                 //ask to end the game EndGame
-                string wantToEndTheGame = UI_Methods.CheckIfWantsToEndTheGame();
+                bool wantToEndTheGame = UI_Methods.ReadYesOrNo($"Do you want to end the game? ({Constants.KEY_FOR_YES}/{Constants.KEY_FOR_NO})");
 
-                if (wantToEndTheGame == "yesEndTheGame")
+                if (wantToEndTheGame)
                 {
                     break;
                 }
