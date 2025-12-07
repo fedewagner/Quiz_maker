@@ -24,35 +24,6 @@ public class UI_Methods
     }
     
     
-    // TODO: Remove this unused method
-    public static string? CheckUserKeyInputForGameModus()
-    {
-        string selection;
-        string? currentMode = null;
-        
-        do
-        {
-            //read key method
-            selection = Console.ReadKey(true).KeyChar.ToString().ToLower();
-
-            if (!(selection == Constants.KEY_FOR_PLAYING || selection == Constants.KEY_FOR_WRITING))
-            {
-                Console.WriteLine($"Please press ´{Constants.KEY_FOR_PLAYING}´ or ´{Constants.KEY_FOR_WRITING}´ ");
-            }
-        } while (!(selection == Constants.KEY_FOR_PLAYING || selection == Constants.KEY_FOR_WRITING) ); //repeat if the key is not valid
-
-        switch (selection)
-        {
-            case Constants.KEY_FOR_WRITING:
-                currentMode = "WRITE";
-                break;
-            case Constants.KEY_FOR_PLAYING:
-                currentMode = "PLAY";
-                break;
-        }
-        
-        return currentMode;
-    }
     
     public static void WelcomeToWritingMode()
     {

@@ -44,8 +44,6 @@ namespace Quiz_maker
                 //define the first SetOfQuestions
                 QuestionsAndAnswers questionAndAnswersSet_i = new QuestionsAndAnswers();
 
-                //TODO: handle null cases
-
                 //Things to be done for writing the questions
                 if (listOfQuestionsAndAnswersSet.Count == 0)
                 {
