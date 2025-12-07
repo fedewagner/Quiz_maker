@@ -73,13 +73,13 @@ public class Logic
         switch (difficulty)
         {
             case Constants.DIFFICULTY_EASY:
-                path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList_easy.xml";
+                path = Constants.PATH_EASY; ;
                 break;
             case Constants.DIFFICULTY_NORMAL:
-                path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList_normal.xml";
+                path = Constants.PATH_NORMAL;
                 break;
             case Constants.DIFFICULTY_HARD:
-                path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList_hard.xml";
+                path = Constants.PATH_HARD;
                 break;
 
         }

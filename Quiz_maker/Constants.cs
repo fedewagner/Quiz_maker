@@ -24,4 +24,8 @@ public class Constants
     public const string DIFFICULTY_EASY = "EASY";
     public const string DIFFICULTY_NORMAL = "NORMAL";
     public const string DIFFICULTY_HARD = "HARD";
+    
+    public const string PATH_EASY = @"../../../../Data/ObjectList_easy.xml";
+    public const string PATH_NORMAL = @"../../../../Data/ObjectList_normal.xml";
+    public const string PATH_HARD = @"../../../../Data/ObjectList_hard.xml";
 }

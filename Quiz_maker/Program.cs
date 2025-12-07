@@ -21,7 +21,7 @@ namespace Quiz_maker
             if (wantToReadTheList)
             {
                 
-                string listDifficutly = UI_Methods.WhichDifficulty($"Do you want the Easy, Normal or Hard questions? (e/n/h)");
+                string listDifficutly = UI_Methods.SelectGameDifficulty($"Do you want the Easy, Normal or Hard questions? (e/n/h)");
                 
                 
                 //Deserialize
@@ -66,7 +66,8 @@ namespace Quiz_maker
                 gameModus = UI_Methods.CheckIfUserWantsToPlayAlready();
 
             } ;
-
+            
+            
             //Serialisations of the created set of Questions and Answers
             if (newListCreatedByUser)
             {

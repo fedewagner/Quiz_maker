@@ -233,7 +233,7 @@ public class UI_Methods
         Console.WriteLine($"You still have {Constants.TOTAL_QUESTIONS_ASKED - questionsAsked} questions left!");
     }
     
-    public static string WhichDifficulty(string question)
+    public static string SelectGameDifficulty(string question)
     {
         //Read Key Method
         string selection;
