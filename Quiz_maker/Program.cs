@@ -9,7 +9,6 @@ namespace Quiz_maker
         static void Main(string[] args)
         {
             UI_Methods.WelcomeUser();
-            UI_Methods.ExplainUserTheModi();
             List<QuestionsAndAnswers>? listOfQuestionsAndAnswersSet = new List<QuestionsAndAnswers>();
 
 

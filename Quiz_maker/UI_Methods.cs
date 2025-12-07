@@ -14,15 +14,6 @@ public class UI_Methods
         Console.WriteLine($"Everytime you get a right answer, you'll get {Constants.WINNING_DELTA} points!!!");
         Console.ForegroundColor = ConsoleColor.Gray;
         }
-
-    public static void ExplainUserTheModi()
-    {
-        //explain key for playing
-        //list amount of questions available
-        Console.WriteLine($"If you want to go to WRITE mode (Press {Constants.KEY_FOR_WRITING})!");
-        Console.WriteLine($"Otherwise, to play (Press {Constants.KEY_FOR_PLAYING})!");
-    }
-    
     
     
     public static void WelcomeToWritingMode()
@@ -36,17 +27,23 @@ public class UI_Methods
     
     public static QuestionsAndAnswers AskUserTheQuestionsAndAnswers(QuestionsAndAnswers questionsAndAnswersSet)
     {
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.WriteLine("What is the Question you would like to use for this set:");
+        Console.ForegroundColor = ConsoleColor.Gray;
         string? questionInput = Console.ReadLine();
 
         for (int i = 1; i <= Constants.AMOUNT_OF_POSSIBLE_ANSWERS; i++)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"What is the possible answer {i}?");
+            Console.ForegroundColor = ConsoleColor.Gray;
             string? answerInput = Console.ReadLine();
             questionsAndAnswersSet.PossibleAnswers.Add(answerInput);;
         }
         
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("Which possible answer is the correct? (please indicate an integer)");
+        Console.ForegroundColor = ConsoleColor.Gray;
         int correctAnswerInput = Convert.ToInt32(Console.ReadLine());
 
         questionsAndAnswersSet = PopulateTheQuestionsAndAnswers(questionInput, questionsAndAnswersSet.PossibleAnswers , correctAnswerInput, questionsAndAnswersSet);
@@ -155,17 +152,17 @@ public class UI_Methods
         
         do
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(
                 $"Please press ´{Constants.KEY_FOR_PLAYING}´ for playing or ´{Constants.KEY_FOR_WRITING}´ adding more questions sets.");
             
             selection = Console.ReadKey(true).KeyChar.ToString().ToLower();
-
-            if (!(selection == Constants.KEY_FOR_PLAYING || selection == Constants.KEY_FOR_WRITING))
-            {
-                Console.WriteLine($"Please press ´{Constants.KEY_FOR_PLAYING}´ for playing or ´{Constants.KEY_FOR_WRITING}´ adding more questions sets.");
-            }
+            
         } while (!(selection == Constants.KEY_FOR_PLAYING || selection == Constants.KEY_FOR_WRITING) ); //repeat if the key is not valid
 
+        Console.ForegroundColor = ConsoleColor.Gray;
+
+        
         switch (selection)
         {
             case Constants.KEY_FOR_WRITING:
