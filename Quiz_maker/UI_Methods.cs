@@ -219,18 +219,8 @@ public class UI_Methods
                 Console.WriteLine(question);
             }
         } while (!(selection == Constants.KEY_FOR_YES || selection == Constants.KEY_FOR_NO) ); //repeat if the key is not valid
-
-        switch (selection)
-        {
-            case Constants.KEY_FOR_YES:
-                isAfirmativeAnswer = true;
-                break;
-            case Constants.KEY_FOR_NO:
-                isAfirmativeAnswer = false;
-                break;
-        }
         
-        return isAfirmativeAnswer;
+        return Constants.KEY_FOR_YES == selection;
     }
 
     public static void InformAboutSerialisedFiles(string changeStatus)
