@@ -50,24 +50,25 @@ public class Logic
         
     }
     
+    //Property declaration for Serialise and Deserialise
+    private static readonly XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+    
     
     public static void SerializeTheList(List<QuestionsAndAnswers> list)
     {
         
-    XmlSerializer writer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
 
-    var path = @"/Users/fedewagner/Documents/Rakete Mentoring/Practice/Quiz maker/ObjectList.xml";
+    var path = Constants.PATH_FOR_SAVING;
 
     using (FileStream file = File.Create(path))
     {
-        writer.Serialize(file, list);
+        serializer.Serialize(file, list);
     }
     
     }
 
     public static List<QuestionsAndAnswers>? DeserializeTheList(string difficulty)
     {
-        XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
         string path = null;
 
         switch (difficulty)

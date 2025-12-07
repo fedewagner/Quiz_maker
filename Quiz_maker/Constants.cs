@@ -28,4 +28,6 @@ public class Constants
     public const string PATH_EASY = @"../../../../Data/ObjectList_easy.xml";
     public const string PATH_NORMAL = @"../../../../Data/ObjectList_normal.xml";
     public const string PATH_HARD = @"../../../../Data/ObjectList_hard.xml";
+    
+    public const string PATH_FOR_SAVING = @"../../../../Data/ObjectList.xml";
 }
