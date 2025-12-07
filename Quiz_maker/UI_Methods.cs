@@ -23,6 +23,8 @@ public class UI_Methods
         Console.WriteLine($"Otherwise, to play (Press {Constants.KEY_FOR_PLAYING})!");
     }
     
+    
+    // TODO: Remove this unused method
     public static string? CheckUserKeyInputForGameModus()
     {
         string selection;
@@ -65,30 +67,30 @@ public class UI_Methods
     {
         Console.WriteLine("What is the Question you would like to use for this set:");
         string? questionInput = Console.ReadLine();
-        Console.WriteLine("What is the possible answer 1?");
-        string? answer1Input = Console.ReadLine();
-        Console.WriteLine("What is the possible answer 2?");
-        string? answer2Input = Console.ReadLine();
-        Console.WriteLine("What is the possible answer 3?");
-        string? answer3Input = Console.ReadLine();
-        Console.WriteLine("What is the possible answer 4?");
-        string? answer4Input = Console.ReadLine();
+
+        for (int i = 1; i <= Constants.AMOUNT_OF_POSSIBLE_ANSWERS; i++)
+        {
+            Console.WriteLine($"What is the possible answer {i}?");
+            string? answerInput = Console.ReadLine();
+            questionsAndAnswersSet.PossibleAnswers.Add(answerInput);;
+        }
+        
         Console.WriteLine("Which possible answer is the correct? (please indicate an integer)");
         int correctAnswerInput = Convert.ToInt32(Console.ReadLine());
 
-        questionsAndAnswersSet = PopulateTheQuestionsAndAnswers(questionInput, answer1Input, answer2Input, answer3Input, answer4Input, correctAnswerInput, questionsAndAnswersSet);
+        questionsAndAnswersSet = PopulateTheQuestionsAndAnswers(questionInput, questionsAndAnswersSet.PossibleAnswers , correctAnswerInput, questionsAndAnswersSet);
         
         return questionsAndAnswersSet;
 
     }
     
-    public static QuestionsAndAnswers PopulateTheQuestionsAndAnswers(string? questionInput,string? answer1Input,string? answer2Input,string? answer3Input,string? answer4Input,int correctAnswerInput, QuestionsAndAnswers questionsAndAnswersSet) 
+    public static QuestionsAndAnswers PopulateTheQuestionsAndAnswers(string? questionInput,List<string?> possibleAnswers,int correctAnswerInput, QuestionsAndAnswers questionsAndAnswersSet) 
     {
+        
         questionsAndAnswersSet.Question =  questionInput;
-        questionsAndAnswersSet.PosibleAnswer_1 = answer1Input;
-        questionsAndAnswersSet.PosibleAnswer_2 = answer2Input;
-        questionsAndAnswersSet.PosibleAnswer_3 = answer3Input;
-        questionsAndAnswersSet.PosibleAnswer_4 = answer4Input;
+        
+        questionsAndAnswersSet.PossibleAnswers = possibleAnswers;
+        
         questionsAndAnswersSet.CorrectAnswer = correctAnswerInput; 
         
         return questionsAndAnswersSet;
@@ -103,14 +105,15 @@ public class UI_Methods
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.WriteLine("And the possible answer are:");
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("1. "  + questionsAndAnswersSet.PosibleAnswer_1);
-        Console.WriteLine("2. "  + questionsAndAnswersSet.PosibleAnswer_2);
-        Console.WriteLine("3. "  + questionsAndAnswersSet.PosibleAnswer_3);
-        Console.WriteLine("4. "  + questionsAndAnswersSet.PosibleAnswer_4);    
+        
+        for (int j = 0; j < questionsAndAnswersSet.PossibleAnswers.Count; j++)
+        {
+            Console.WriteLine($"{j + 1}. {questionsAndAnswersSet.PossibleAnswers[j]}");
+        }
+        Console.ForegroundColor = ConsoleColor.Gray;
+
+        
     }
-    
-    
-    
 
     public static int ReadUserAnswerGuess(QuestionsAndAnswers questions)
     {
@@ -149,17 +152,23 @@ public class UI_Methods
     {
         if (isCorrect)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Well done, correct answer!");
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Incorrect answer!");
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 
     public static void PrintUsersScore(int userScore)
     {
+        Console.ForegroundColor = ConsoleColor.DarkMagenta;
         Console.WriteLine($"Your score is {userScore} points!");
+        Console.ForegroundColor = ConsoleColor.Gray;
     }
 
     public static void ShowAmountOfQuestionsAndAnswersSetStored(List<QuestionsAndAnswers> questionsAndAnswersList)

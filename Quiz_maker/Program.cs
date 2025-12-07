@@ -44,7 +44,7 @@ namespace Quiz_maker
                 //define the first SetOfQuestions
                 QuestionsAndAnswers questionAndAnswersSet_i = new QuestionsAndAnswers();
 
-                //TBD handle null cases
+                //TODO: handle null cases
 
                 //Things to be done for writing the questions
                 if (listOfQuestionsAndAnswersSet.Count == 0)
@@ -66,7 +66,6 @@ namespace Quiz_maker
                 gameModus = UI_Methods.CheckIfUserWantsToPlayAlready();
 
             } ;
-            
             
             //Serialisations of the created set of Questions and Answers
             if (newListCreatedByUser)

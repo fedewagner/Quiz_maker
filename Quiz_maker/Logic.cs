@@ -51,7 +51,7 @@ public class Logic
     }
     
     //Property declaration for Serialise and Deserialise
-    private static readonly XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+    private static readonly XmlSerializer Serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
     
     
     public static void SerializeTheList(List<QuestionsAndAnswers> list)
@@ -62,14 +62,14 @@ public class Logic
 
     using (FileStream file = File.Create(path))
     {
-        serializer.Serialize(file, list);
+        Serializer.Serialize(file, list);
     }
     
     }
 
     public static List<QuestionsAndAnswers>? DeserializeTheList(string difficulty)
     {
-        string path = null;
+        string? path = null;
 
         switch (difficulty)
         {
@@ -86,13 +86,13 @@ public class Logic
         }
         
 
-        List<QuestionsAndAnswers> deserializedList = null;
+        List<QuestionsAndAnswers>? deserializedList = null;
 
         if (path != null)
-            using (FileStream file = File.OpenRead(path))
-            {
-                deserializedList = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
-            }
+        {
+            using FileStream file = File.OpenRead(path);
+            deserializedList = Serializer.Deserialize(file) as List<QuestionsAndAnswers>;
+        }
 
         return deserializedList;
     }
